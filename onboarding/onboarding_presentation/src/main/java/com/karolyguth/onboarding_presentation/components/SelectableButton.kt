@@ -6,9 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 
 @Composable
 fun SelectableButton(
@@ -40,14 +38,14 @@ fun SelectableButton(
             .clickable {
                 onClick()
             }
-            .padding(LocalSpacing.current.spaceSmall)
+            .padding(LocalDimens.current.spaceSmall)
     ) {
 
         Text(
             text = text,
             style = textStyle,
             color = if(isSelected) selectedTextColor else color,
-            modifier = Modifier.padding(LocalSpacing.current.spaceSmall)
+            modifier = Modifier.padding(LocalDimens.current.spaceSmall)
         )
 
     }

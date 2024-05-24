@@ -30,17 +30,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import com.karolyguth.core_ui.LocalSpacing
-import com.karolyguth.tracker_domain.model.TrackedFood
+import com.karolyguth.core_ui.theme.LocalDimens
+import com.karolyguth.tracker_domain.model.Dish
 import com.karolyguth.core.R
+
 @ExperimentalCoilApi
 @Composable
 fun TrackedFoodItem(
-    trackedFood: TrackedFood,
+    dish: Dish,
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(5.dp))
@@ -57,14 +58,14 @@ fun TrackedFoodItem(
     ) {
         Image(
             painter = rememberImagePainter(
-                data = trackedFood.imageUrl,
+                data = dish.imageUrl,
                 builder = {
                     crossfade(true)
                     error(R.drawable.ic_burger)
                     fallback(R.drawable.ic_burger)
                 }
             ),
-            contentDescription = trackedFood.name,
+            contentDescription = dish.name,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxHeight()
@@ -81,7 +82,7 @@ fun TrackedFoodItem(
             modifier = Modifier.weight(1f)
         ) {
             Text(
-                text = trackedFood.name,
+                text = dish.name,
                 style = MaterialTheme.typography.bodySmall,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 2
@@ -90,8 +91,8 @@ fun TrackedFoodItem(
             Text(
                 text = stringResource(
                     id = R.string.nutrient_info,
-                    trackedFood.amount,
-                    trackedFood.calories
+                    dish.amount,
+                    dish.calories
                 ),
                 style = MaterialTheme.typography.bodyMedium
             )
@@ -114,7 +115,7 @@ fun TrackedFoodItem(
             ) {
                 NutrientInfo(
                     name = stringResource(id = R.string.carbs),
-                    amount = trackedFood.carbs,
+                    amount = dish.carbs,
                     unit = stringResource(id = R.string.grams),
                     amountTextSize = 16.sp,
                     unitTextSize = 12.sp,
@@ -123,7 +124,7 @@ fun TrackedFoodItem(
                 Spacer(modifier = Modifier.width(spacing.spaceSmall))
                 NutrientInfo(
                     name = stringResource(id = R.string.protein),
-                    amount = trackedFood.protein,
+                    amount = dish.protein,
                     unit = stringResource(id = R.string.grams),
                     amountTextSize = 16.sp,
                     unitTextSize = 12.sp,
@@ -132,7 +133,7 @@ fun TrackedFoodItem(
                 Spacer(modifier = Modifier.width(spacing.spaceSmall))
                 NutrientInfo(
                     name = stringResource(id = R.string.fat),
-                    amount = trackedFood.fat,
+                    amount = dish.fat,
                     unit = stringResource(id = R.string.grams),
                     amountTextSize = 16.sp,
                     unitTextSize = 12.sp,

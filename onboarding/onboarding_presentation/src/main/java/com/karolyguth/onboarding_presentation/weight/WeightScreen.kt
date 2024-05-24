@@ -20,7 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.karolyguth.core.R
 import com.karolyguth.core.util.UiEvent
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 import com.karolyguth.onboarding_presentation.components.ActionButton
 import com.karolyguth.onboarding_presentation.components.UnitTextField
 
@@ -31,7 +31,7 @@ fun WeightScreen(
     viewModel: WeightViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {

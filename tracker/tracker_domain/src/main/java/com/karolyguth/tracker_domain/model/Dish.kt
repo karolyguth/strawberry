@@ -3,7 +3,7 @@ package com.karolyguth.tracker_domain.model
 import java.time.LocalDate
 
 
-data class TrackedFood(
+data class Dish(
     val name: String,
     val carbs: Int,
     val protein: Int,

@@ -21,7 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.karolyguth.core.R
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 import com.karolyguth.core_ui.theme.CarbColor
 import com.karolyguth.core_ui.theme.FatColor
 import com.karolyguth.core_ui.theme.ProteinColor
@@ -33,7 +33,7 @@ fun NutrientsHeader(
     state: TrackerOverViewState,
     modifier: Modifier = Modifier
 ) {
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     val animatedCalorieCount = animateIntAsState(
         targetValue = state.totalCalories
     )

@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 
 @Composable
 fun NutrientInfo(
@@ -26,7 +26,7 @@ fun NutrientInfo(
     unitTextSize: TextUnit = 14.sp,
     unitColor: Color = MaterialTheme.colorScheme.onBackground
 ) {
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally

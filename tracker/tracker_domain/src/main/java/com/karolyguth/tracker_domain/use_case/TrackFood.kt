@@ -1,24 +1,23 @@
 package com.karolyguth.tracker_domain.use_case
 
 import com.karolyguth.tracker_domain.model.MealType
-import com.karolyguth.tracker_domain.model.TrackableFood
-import com.karolyguth.tracker_domain.model.TrackedFood
+import com.karolyguth.tracker_domain.model.Ingredient
+import com.karolyguth.tracker_domain.model.Dish
 import com.karolyguth.tracker_domain.repository.TrackerRepository
 import java.time.LocalDate
-import java.time.temporal.TemporalAmount
 import kotlin.math.roundToInt
 
 class TrackFood (
     private val repository: TrackerRepository
 ) {
     suspend operator fun invoke (
-        food: TrackableFood,
+        food: Ingredient,
         amount: Int,
         mealType: MealType,
         date: LocalDate
     ) {
         repository.insertTrackedFood(
-            TrackedFood(
+            Dish(
                 name = food.name,
                 carbs = ((food.carbsPer100g / 100f) * amount).roundToInt(),
                 protein = ((food.proteinPer100g / 100f) * amount).roundToInt(),

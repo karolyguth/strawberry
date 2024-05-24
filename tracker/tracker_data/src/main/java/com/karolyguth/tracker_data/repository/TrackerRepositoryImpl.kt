@@ -5,8 +5,8 @@ import com.karolyguth.tracker_data.mapper.toTrackableFood
 import com.karolyguth.tracker_data.mapper.toTrackedFood
 import com.karolyguth.tracker_data.mapper.toTrackedFoodEntity
 import com.karolyguth.tracker_data.remote.OpenFoodApi
-import com.karolyguth.tracker_domain.model.TrackableFood
-import com.karolyguth.tracker_domain.model.TrackedFood
+import com.karolyguth.tracker_domain.model.Ingredient
+import com.karolyguth.tracker_domain.model.Dish
 import com.karolyguth.tracker_domain.repository.TrackerRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -22,7 +22,7 @@ class TrackerRepositoryImpl(
         query: String,
         page: Int,
         pageSize: Int
-    ): Result<List<TrackableFood>> {
+    ): Result<List<Ingredient>> {
         return try {
             val searchDto = api.searchFood(
                 query = query,
@@ -38,15 +38,15 @@ class TrackerRepositoryImpl(
         }
     }
 
-    override suspend fun insertTrackedFood(food: TrackedFood) {
+    override suspend fun insertTrackedFood(food: Dish) {
         dao.insertTrackedFood(food.toTrackedFoodEntity())
     }
 
-    override suspend fun deleteTrackedFood(food: TrackedFood) {
+    override suspend fun deleteTrackedFood(food: Dish) {
         dao.deleteTrackedFood(food.toTrackedFoodEntity())
     }
 
-    override fun getFoodsForDate(localDate: LocalDate): Flow<List<TrackedFood>> {
+    override fun getFoodsForDate(localDate: LocalDate): Flow<List<Dish>> {
         return dao.getFoodsForDate(
             day = localDate.dayOfMonth,
             month = localDate.monthValue,

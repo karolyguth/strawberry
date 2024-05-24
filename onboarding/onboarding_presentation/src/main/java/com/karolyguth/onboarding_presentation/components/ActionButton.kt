@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 
 @Composable
 fun ActionButton(
@@ -29,7 +29,7 @@ fun ActionButton(
         Text(text = text,
             style = textStyle,
             color = MaterialTheme.colorScheme.onPrimary,
-            modifier = Modifier.padding(LocalSpacing.current.spaceSmall)
+            modifier = Modifier.padding(LocalDimens.current.spaceSmall)
         )
     }
 }

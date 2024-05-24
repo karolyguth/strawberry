@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,20 +13,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import com.karolyguth.core.R
 import com.karolyguth.core.navigation.Route
 import com.karolyguth.core.util.UiEvent
-import com.karolyguth.core_ui.LocalSpacing
-import com.karolyguth.core_ui.components.FoodCard
+import com.karolyguth.core_ui.theme.LocalDimens
 import com.karolyguth.onboarding_presentation.components.ActionButton
 
 @Composable
 fun WelcomeScreen(
     onNavigate: (UiEvent.Navigate) -> Unit
 ) {
-    val spacing = LocalSpacing.current
-
+    val spacing = LocalDimens.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -45,6 +41,7 @@ fun WelcomeScreen(
             text = stringResource(id = R.string.next),
             onClick = { onNavigate(UiEvent.Navigate(Route.GENDER)) },
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            isEnabled = true)
+            isEnabled = true
+        )
     }
 }

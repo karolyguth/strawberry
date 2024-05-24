@@ -22,8 +22,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
-import com.karolyguth.core_ui.LocalSpacing
 import com.karolyguth.core.R
+import com.karolyguth.core_ui.theme.LocalDimens
 import com.karolyguth.tracker_presentation.tracker_overview.Meal
 
 @Composable
@@ -33,7 +33,7 @@ fun ExpandableMeal(
     modifier: Modifier,
     onToggleClick: () -> Unit
 ) {
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     val context = LocalContext.current
 
     Column(modifier = modifier) {

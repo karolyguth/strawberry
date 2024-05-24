@@ -22,9 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.karolyguth.core.R
 import com.karolyguth.core.domain.model.ActivityLevel
-import com.karolyguth.core.domain.model.Gender
 import com.karolyguth.core.util.UiEvent
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 import com.karolyguth.onboarding_presentation.components.ActionButton
 import com.karolyguth.onboarding_presentation.components.SelectableButton
 
@@ -33,7 +32,7 @@ fun ActivityScreen(
     onNavigate: (UiEvent.Navigate) -> Unit,
     viewModel: ActivityViewModel = hiltViewModel()
 ) {
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     //Launch collector to listen to UI events
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->

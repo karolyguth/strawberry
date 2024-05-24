@@ -1,14 +1,15 @@
 package com.karolyguth.tracker_presentation.search
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarHostState
@@ -22,15 +23,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.annotation.ExperimentalCoilApi
 import com.karolyguth.core.util.UiEvent
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 import com.karolyguth.core.R
-import com.karolyguth.tracker_domain.model.MealType
-import com.karolyguth.tracker_presentation.search.components.SearchTextField
-import com.karolyguth.tracker_presentation.search.components.TrackableFoodItem
-import java.time.LocalDate
+import com.karolyguth.core_ui.components.SearchTextField
+import com.karolyguth.core_ui.components.CardWithArchedSeparator
 
 @ExperimentalCoilApi
 @ExperimentalComposeUiApi
@@ -44,7 +44,7 @@ fun SearchScreen(
     onNavigateUp: () -> Unit,
     viewModel: SearchViewModel = hiltViewModel()
 ) {
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     val state = viewModel.state
     val context = LocalContext.current
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -57,6 +57,7 @@ fun SearchScreen(
                     )
                     keyboardController?.hide()
                 }
+
                 is UiEvent.NavigateUp -> onNavigateUp()
                 else -> Unit
             }
@@ -87,33 +88,24 @@ fun SearchScreen(
             }
         )
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(state.trackableFood) { food ->
-                TrackableFoodItem(
-                    trackableFoodUiState = food,
-                    onClick = {
-                        viewModel.onEvent(SearchEvent.OnToggleTrackableFood(food.food))
-                    },
-                    onAmountChange = {
-                        viewModel.onEvent(SearchEvent.OnAmountForFoodChange(
-                            food.food, it
-                        ))
-                    },
-                    onTrack = {
-                        keyboardController?.hide()
-                        viewModel.onEvent(
-                            SearchEvent.OnTrackFoodClick(
-                                food = food.food,
-                                mealType = MealType.fromString(mealName),
-                                date = LocalDate.of(year, month, dayOfMonth)
-                            )
-                        )
-                    },
-                    modifier = Modifier.fillMaxWidth()
-                )
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),  // Adjust the number of columns as needed
+            contentPadding = PaddingValues(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(state.trackableFood.size) { index ->
+                val item = state.trackableFood[index]
+                CardWithArchedSeparator(
+                    title = item.food.name,
+                    calories = item.food.caloriesPer100g.toString(),
+                    imageUrl = item.food.imageUrl ?: "",
+                    onClick = { },
+                    )
             }
         }
     }
+
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center

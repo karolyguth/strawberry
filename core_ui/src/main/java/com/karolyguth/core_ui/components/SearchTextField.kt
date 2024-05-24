@@ -1,4 +1,4 @@
-package com.karolyguth.tracker_presentation.search.components
+package com.karolyguth.core_ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -25,10 +25,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.karolyguth.core_ui.LocalSpacing
-import com.karolyguth.core.R
+import com.karolyguth.core_ui.theme.LocalDimens
+import com.karolyguth.core_ui.R
 
 @Composable
 fun SearchTextField(
@@ -40,7 +39,7 @@ fun SearchTextField(
     shouldShowHint: Boolean = false,
     onFocusChanged: (FocusState) -> Unit
 ) {
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     Box(
         modifier = modifier
     ) {
@@ -70,7 +69,7 @@ fun SearchTextField(
                 .padding(end = spacing.spaceMedium)
                 .onFocusChanged { onFocusChanged(it) }
         )
-        if(shouldShowHint) {
+        if (shouldShowHint) {
             Text(
                 text = hint,
                 style = MaterialTheme.typography.bodySmall,

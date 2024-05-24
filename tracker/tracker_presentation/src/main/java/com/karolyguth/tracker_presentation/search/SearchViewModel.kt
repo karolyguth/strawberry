@@ -49,7 +49,7 @@ class SearchViewModel @Inject constructor(
                 state = state.copy(
                     trackableFood = state.trackableFood.map {
                         if(it.food == event.food) {
-                            it.copy(isExpanded = !it.isExpanded)
+                            it.copy(isSelected = !it.isSelected)
                         } else it
                     }
                 )
@@ -76,7 +76,7 @@ class SearchViewModel @Inject constructor(
                 .onSuccess { foods ->
                     state = state.copy(
                         trackableFood = foods.map {
-                            TrackableFoodUiState(it)
+                            IngredientUiState(it)
                         },
                         isSearching = false,
                         query = ""

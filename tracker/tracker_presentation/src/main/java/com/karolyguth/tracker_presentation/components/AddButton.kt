@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.karolyguth.core.R
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 
 @Composable
 fun AddButton(
@@ -30,7 +30,7 @@ fun AddButton(
     modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colorScheme.primary
 ) {
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     Row(modifier = modifier
         .clip(RoundedCornerShape(100f))
         .clickable { onClick() }

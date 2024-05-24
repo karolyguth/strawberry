@@ -55,7 +55,7 @@ class TrackerOverviewViewModel @Inject constructor(
             }
             is TrackerOverviewEvent.OnDeleteTrackedFoodClick -> {
                 viewModelScope.launch {
-                    trackerUseCases.deleteTrackedFood(event.trackedFood)
+                    trackerUseCases.deleteTrackedFood(event.dish)
                     refreshFoods()
                 }
             }
@@ -99,7 +99,7 @@ class TrackerOverviewViewModel @Inject constructor(
                     proteinGoal = nutrientsResult.proteinGoal,
                     fatGoal = nutrientsResult.fatGoal,
                     caloriesGoal = nutrientsResult.caloriesGoal,
-                    trackedFoods = foods,
+                    dishes = foods,
                     meals = state.meals.map {
                         val nutrientsForMeal =
                             nutrientsResult.mealNutrients[it.mealType]

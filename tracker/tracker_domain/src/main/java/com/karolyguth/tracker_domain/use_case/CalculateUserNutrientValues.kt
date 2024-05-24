@@ -6,12 +6,12 @@ import com.karolyguth.core.domain.model.UserInfo
 import com.karolyguth.core.domain.model.WeightGoal
 import com.karolyguth.core.domain.preferences.Preferences
 import com.karolyguth.tracker_domain.model.MealType
-import com.karolyguth.tracker_domain.model.TrackedFood
+import com.karolyguth.tracker_domain.model.Dish
 import kotlin.math.roundToInt
 
 class CalculateUserNutrientValues(private val preferences: Preferences) {
-    operator fun invoke(trackedFoods: List<TrackedFood>): Result {
-        val allNutrients = trackedFoods
+    operator fun invoke(dishes: List<Dish>): Result {
+        val allNutrients = dishes
             .groupBy { it.mealType }
             .mapValues { entry ->
                 val type = entry.key

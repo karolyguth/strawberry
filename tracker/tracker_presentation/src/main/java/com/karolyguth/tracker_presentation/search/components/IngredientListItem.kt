@@ -42,22 +42,22 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.karolyguth.core.R
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 import com.karolyguth.tracker_presentation.components.NutrientInfo
-import com.karolyguth.tracker_presentation.search.TrackableFoodUiState
+import com.karolyguth.tracker_presentation.search.IngredientUiState
 
 
 @ExperimentalCoilApi
 @Composable
 fun TrackableFoodItem(
-    trackableFoodUiState: TrackableFoodUiState,
+    ingredientUiState: IngredientUiState,
     onClick: () -> Unit,
     onAmountChange: (String) -> Unit,
     onTrack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val food = trackableFoodUiState.food
-    val spacing = LocalSpacing.current
+    val food = ingredientUiState.food
+    val spacing = LocalDimens.current
     Column(
         modifier = modifier
             .clip(RoundedCornerShape(5.dp))
@@ -142,7 +142,7 @@ fun TrackableFoodItem(
                 )
             }
         }
-        AnimatedVisibility(visible = trackableFoodUiState.isExpanded) {
+        AnimatedVisibility(visible = ingredientUiState.isSelected) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -152,10 +152,10 @@ fun TrackableFoodItem(
             ) {
                 Row {
                     BasicTextField(
-                        value = trackableFoodUiState.amount,
+                        value = ingredientUiState.amount,
                         onValueChange = onAmountChange,
                         keyboardOptions = KeyboardOptions(
-                            imeAction = if(trackableFoodUiState.amount.isNotBlank()) {
+                            imeAction = if(ingredientUiState.amount.isNotBlank()) {
                                 ImeAction.Done
                             } else ImeAction.Default
                         ),
@@ -184,7 +184,7 @@ fun TrackableFoodItem(
                 }
                 IconButton(
                     onClick = onTrack,
-                    enabled = trackableFoodUiState.amount.isNotBlank()
+                    enabled = ingredientUiState.amount.isNotBlank()
                 ) {
                     Icon(
                         imageVector = Icons.Default.Check,

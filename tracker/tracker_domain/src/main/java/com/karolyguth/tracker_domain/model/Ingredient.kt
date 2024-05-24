@@ -1,6 +1,6 @@
 package com.karolyguth.tracker_domain.model
 
-data class TrackableFood(
+data class Ingredient(
     val name: String,
     val imageUrl: String?,
     val caloriesPer100g: Int,

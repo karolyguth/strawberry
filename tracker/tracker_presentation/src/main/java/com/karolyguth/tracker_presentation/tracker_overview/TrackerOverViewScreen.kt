@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.karolyguth.core.util.UiEvent
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 import com.karolyguth.core.R
 import com.karolyguth.tracker_presentation.components.AddButton
 import com.karolyguth.tracker_presentation.components.DaySelector
@@ -28,7 +28,7 @@ fun TrackerOverViewScreen(
     onNavigate: (UiEvent.Navigate) -> Unit, viewModel: TrackerOverviewViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     val context = LocalContext.current
 
     LaunchedEffect(key1 = context) {
@@ -66,11 +66,11 @@ fun TrackerOverViewScreen(
                             .fillMaxWidth()
                             .padding(horizontal = spacing.spaceSmall)
                     ) {
-                        val foods = state.trackedFoods.filter { it.mealType == meal.mealType }
+                        val foods = state.dishes.filter { it.mealType == meal.mealType }
 
                         foods.forEach { food ->
                             TrackedFoodItem(
-                                trackedFood = food,
+                                dish = food,
                                 onDeleteClick = {
                                     viewModel.onEvent(
                                         TrackerOverviewEvent

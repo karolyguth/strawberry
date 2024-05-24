@@ -23,7 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.karolyguth.core.R
 import com.karolyguth.core.domain.model.WeightGoal
 import com.karolyguth.core.util.UiEvent
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.theme.LocalDimens
 import com.karolyguth.onboarding_presentation.components.ActionButton
 import com.karolyguth.onboarding_presentation.components.SelectableButton
 
@@ -32,7 +32,7 @@ fun WeightGoalScreen(
     onNavigate: (UiEvent.Navigate) -> Unit,
     viewModel: GoalViewModel = hiltViewModel()
 ) {
-    val spacing = LocalSpacing.current
+    val spacing = LocalDimens.current
     //Launch collector to listen to UI events
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->

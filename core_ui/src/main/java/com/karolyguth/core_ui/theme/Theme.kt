@@ -11,13 +11,11 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import com.karolyguth.core_ui.Dimensions
-import com.karolyguth.core_ui.LocalSpacing
+import com.karolyguth.core_ui.util.getDimensForScreenSize
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -66,7 +64,9 @@ fun StrawberryTheme(
         }
     }
 
-    CompositionLocalProvider(value = LocalSpacing provides Dimensions()) {
+    val context = LocalContext.current
+    val dimens = getDimensForScreenSize(context)
+    CompositionLocalProvider(LocalDimens provides dimens) {
         MaterialTheme(
             colorScheme = colorScheme,
             typography = Typography,

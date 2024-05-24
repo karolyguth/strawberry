@@ -2,11 +2,11 @@ package com.karolyguth.tracker_data.mapper
 
 import com.karolyguth.tracker_data.local.entity.TrackedFoodEntity
 import com.karolyguth.tracker_domain.model.MealType
-import com.karolyguth.tracker_domain.model.TrackedFood
+import com.karolyguth.tracker_domain.model.Dish
 import java.time.LocalDate
 
-fun TrackedFoodEntity.toTrackedFood(): TrackedFood {
-    return TrackedFood(
+fun TrackedFoodEntity.toTrackedFood(): Dish {
+    return Dish(
         name = name,
         carbs = carbs,
         protein = protein,
@@ -20,7 +20,7 @@ fun TrackedFoodEntity.toTrackedFood(): TrackedFood {
     )
 }
 
-fun TrackedFood.toTrackedFoodEntity(): TrackedFoodEntity {
+fun Dish.toTrackedFoodEntity(): TrackedFoodEntity {
     return TrackedFoodEntity(
         name = name,
         carbs = carbs,
