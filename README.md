@@ -1,10 +1,9 @@
 # Daily Nutrition Calculator App
 
-This project is a daily nutrition calculator app built using Clean Architecture, MVI (Model-View-Intent), and a Multi-Modular design. The initial version of the project was created while following the Multi Module App course by Philipp Lackner. 
+This project is a daily nutrition calculator app built using Clean Architecture, and a Multi-Modular design. The initial version of the project was created while following the Multi Module App course by Philipp Lackner. 
 
 The app is entirely written in Kotlin and demonstrates the usage of various technologies and architectural principles, including:
 
-- **MVI**: Utilizing the Model-View-Intent architecture pattern for a reactive and unidirectional data flow.
 - **Clean Architecture**: Implementing separation of concerns and maintainability through layers.
 - **Multi-Modular Structure**: Organizing the project into multiple modules for better scalability and maintainability.
 - **Jetpack Compose**: Utilizing the modern UI toolkit for building native Android UI.
