@@ -61,7 +61,7 @@ fun SearchTextField(
                 .padding(2.dp)
                 .shadow(
                     elevation = 2.dp,
-                    shape = RoundedCornerShape(5.dp)
+                    shape = spacing.cornerShape
                 )
                 .background(MaterialTheme.colorScheme.surface)
                 .fillMaxWidth()

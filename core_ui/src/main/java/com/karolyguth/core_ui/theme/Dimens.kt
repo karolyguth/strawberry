@@ -1,6 +1,6 @@
 package com.karolyguth.core_ui.theme
 
-import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -23,7 +23,11 @@ data class Dimens(
     val textSizeSmall: Int,
     val textSizeMedium: Int,
     val textSizeLarge: Int,
+    val headingHeight: Dp,
+    val cornerShape: RoundedCornerShape = RoundedCornerShape(25.dp),
+    val cardElevation: Dp = 4.dp
 )
+
 val smallDimens = Dimens(
     default = 0.dp,
     spaceExtraSmall = 4.dp,
@@ -41,7 +45,8 @@ val smallDimens = Dimens(
     marginLarge = 12,
     textSizeSmall = 12,
     textSizeMedium = 14,
-    textSizeLarge = 16
+    textSizeLarge = 16,
+    headingHeight = 100.dp
 )
 
 // Normal Screen Dimensions
@@ -52,8 +57,8 @@ val normalDimens = Dimens(
     spaceMedium = 16.dp,
     spaceLarge = 32.dp,
     spaceExtraLarge = 64.dp,
-    cardWidth = 200.dp,
-    cardHeight = 240.dp,
+    cardWidth = 112.dp,
+    cardHeight = 192.dp,
     paddingSmall = 12,
     paddingMedium = 16,
     paddingLarge = 20,
@@ -62,7 +67,8 @@ val normalDimens = Dimens(
     marginLarge = 16,
     textSizeSmall = 14,
     textSizeMedium = 16,
-    textSizeLarge = 18
+    textSizeLarge = 18,
+    headingHeight = 120.dp
 )
 
 // Large Screen Dimensions
@@ -73,7 +79,7 @@ val largeDimens = Dimens(
     spaceMedium = 20.dp,
     spaceLarge = 40.dp,
     spaceExtraLarge = 80.dp,
-    cardWidth = 240.dp,
+    cardWidth = 112.dp,
     cardHeight = 280.dp,
     paddingSmall = 16,
     paddingMedium = 20,
@@ -83,7 +89,8 @@ val largeDimens = Dimens(
     marginLarge = 20,
     textSizeSmall = 16,
     textSizeMedium = 18,
-    textSizeLarge = 20
+    textSizeLarge = 20,
+    headingHeight = 120.dp
 )
 
 // XLarge Screen Dimensions
@@ -104,7 +111,8 @@ val xlargeDimens = Dimens(
     marginLarge = 24,
     textSizeSmall = 18,
     textSizeMedium = 20,
-    textSizeLarge = 22
+    textSizeLarge = 22,
+    headingHeight = 220.dp
 )
 
 
